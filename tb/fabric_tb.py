@@ -26,27 +26,30 @@ if __name__ == "__main__":
     emulation = os.getenv("EMULATION", False)
     tile_library = os.getenv("TILE_LIBRARY", "classic")
     
-    tiles_path = Path(proj_path / ".." / "ip" / "fabulous-tiles")
-    primitives_path = Path(tiles_path) / "primitives"
-    tile_library_path = Path(tiles_path) / "tiles" / tile_library
-
-    primitives_files = list(primitives_path.glob('**/fabulous/*.v'))
-    tile_files = list(tile_library_path.glob(f'**/macro/{pdk}/fabulous/*.v'))
-
-    #print(f"Primitive sources: {primitives_files}")
-    #print(f"Tile sources: {tile_files}")
-    
     sources = []
     defines = {}
     test_filter = None
+    
+    for folder in ["fabulous-tiles", "extra-tiles"]:
+    
+        tiles_path = Path(proj_path / ".." / "ip" / folder)
+        primitives_path = Path(tiles_path) / "primitives"
+        tile_library_path = Path(tiles_path) / "tiles" / tile_library
+
+        primitives_files = list(primitives_path.glob('**/fabulous/*.v'))
+        tile_files = list(tile_library_path.glob(f'**/macro/{pdk}/fabulous/*.v'))
+
+        #print(f"Primitive sources: {primitives_files}")
+        #print(f"Tile sources: {tile_files}")
+    
+        sources.extend(primitives_files)
+        sources.extend(tile_files)
+    
     
     if emulation:
         sources.append(proj_path / f'../user_designs/designs/{tile_library}/{emulation}/{emulation}.vh')
         defines = {"EMULATION": True}
         test_filter = "test_" + emulation
-    
-    sources.extend(primitives_files)
-    sources.extend(tile_files)
     
     # Add models pack
     sources.append(tiles_path / "models_pack.v")
