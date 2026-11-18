@@ -41,15 +41,15 @@
             librelane.overlays.default
             librelane_plugin_fabulous.overlays.default
             (nix-eda.composePythonOverlay (
-            pkgs': pkgs: pypkgs': pypkgs:
-            let
-              callPythonPackage = lib.callPackageWith (pkgs' // pypkgs');
-            in
-            {
-              cocotbext-spi = callPythonPackage ./nix/cocotbext-spi.nix { };
-              librelane-plugin-extra = callPythonPackage ./default.nix { };
-            }
-          ))
+              pkgs': pkgs: pypkgs': pypkgs:
+              let
+                callPythonPackage = lib.callPackageWith (pkgs' // pypkgs');
+              in
+              {
+                cocotbext-spi = callPythonPackage ./nix/cocotbext-spi.nix { };
+                librelane-plugin-extra = callPythonPackage ./default.nix { };
+              }
+            ))
           ];
         }
       );

@@ -1,5 +1,6 @@
 # User designs
 *.json
+*_synth.v
 *_out.json
 *.fasm
 *.hex
