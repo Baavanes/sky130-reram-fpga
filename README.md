@@ -29,7 +29,7 @@ The RERAM_CIM_32x32 primitives are connected to the `sky130_bmlabs_reram__cim32x
 
 The `classic_fabric_reram` FPGA fabric uses tiles from the [fabulous-tiles](https://github.com/mole99/fabulous-tiles) tile library and can be found under `fabrics/`
 The fabric is implemented with LibreLane using the FABulous plugin for LibreLane: [librelane_plugin_fabulous](https://github.com/mole99/librelane_plugin_fabulous).
-See below for more information about stitching the fabric. 
+See below for more information about stitching the fabric
 
 ## Requirements
 
