@@ -5,6 +5,15 @@ or verify the complete FPGA fabric.
 
 ## ReRAM direct-interface smoke test
 
+Initialize the repository submodules first. The test compiles the authoritative
+BM Labs behavioral model directly from
+`ip/sky130_bmlabs_reram/verilog/behavioral/sky130_bmlabs_reram__cim32x32.sv`;
+it does not keep a duplicate model under `tb/`.
+
+```console
+git submodule update --init --recursive
+```
+
 First synthesize the user design from the repository's root Nix shell:
 
 ```console

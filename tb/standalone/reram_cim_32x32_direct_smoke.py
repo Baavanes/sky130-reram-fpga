@@ -24,11 +24,19 @@ DESIGN_DIR = (
     REPO_ROOT / "user_designs" / "designs" / "classic" / TEST_NAME
 )
 MODEL_DIR = REPO_ROOT / "tb" / "models"
+RERAM_BEHAVIORAL_MODEL = (
+    REPO_ROOT
+    / "ip"
+    / "sky130_bmlabs_reram"
+    / "verilog"
+    / "behavioral"
+    / "sky130_bmlabs_reram__cim32x32.sv"
+)
 
 
 def simulation_sources(design_view: str) -> list[Path]:
     sources: list[Path] = [
-        MODEL_DIR / "sky130_bmlabs_reram__cim32x32.sv",
+        RERAM_BEHAVIORAL_MODEL,
         MODEL_DIR / "RERAM_CIM_32x32_sim.sv",
     ]
 
